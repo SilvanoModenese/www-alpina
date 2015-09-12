@@ -1,0 +1,214 @@
+url = '__URL__'
+
+@require 'nib'
+@require 'rupture'
+@require 'jeet'
+
+global-reset()
+
+font-url(file)
+  return url + '/fonts/' + file
+
+webfont(family, file, weight, style)
+  @font-face
+    font-family family
+    src url(font-url(file + '.eot')),
+        url(font-url(file + '.woff')) format('woff'),
+        url(font-url(file + '.ttf')) format('truetype'),
+        url(font-url(file + '.svg#'+ family)) format('svg')
+    font-weight weight
+    font-style style
+
+webfont('Viga', 'viga/viga-regular-webfont', normal, normal)
+webfont('Open Sans', 'opensans/opensans-light-webfont', 300, normal)
+webfont('Open Sans', 'opensans/opensans-lightitalic-webfont', 300, italic)
+webfont('Open Sans', 'opensans/opensans-regular-webfont', 400, normal)
+webfont('Open Sans', 'opensans/opensans-italic-webfont', 400, italic)
+webfont('Open Sans', 'opensans/opensans-semibolditalic-webfont', 600, italic)
+webfont('Open Sans', 'opensans/opensans-semibold-webfont', 600, normal)
+webfont('Open Sans', 'opensans/opensans-bold-webfont', 700, normal)
+webfont('Open Sans', 'opensans/opensans-bolditalic-webfont', 700, italic)
+webfont('Open Sans', 'opensans/opensans-extrabolditalic-webfont', 800, italic)
+webfont('Open Sans', 'opensans/opensans-extrabold-webfont', 800, normal)
+
+font-heading = "Viga", sans-serif
+font-body = "Open Sans", sans-serif
+
+color-black--dark = rgb(38,42,43)
+color-black = rgb(53,57,58)
+color-black--light = rgb(81,88,90)
+color-black--lighter = rgb(100,100,100)
+color-grey--dark = rgb(139,140,142)
+color-grey = rgb(174,174,176)
+color-white--lighter = rgb(255,255,255)
+color-white--light = rgb(254,254,254)
+color-white--dark = rgb(230,230,230)
+color-red = rgb(239,90,79)
+color-blue--light = rgb(104,187,227)
+
+button(foreground, background)
+  box-shadow inset 0 0 0 2px foreground
+  color foreground
+  &:focus
+    outline 0
+  &:hover
+    background rgba(foreground, 0.2)
+  &:active
+    background foreground
+    color background
+
+.title
+  font-family font-heading
+  text-transform uppercase
+
+.container
+  max-width 55rem
+  margin 0 auto
+
+.paddings
+  padding 0 5rem
+  +below(35em)
+    padding 0 .5rem
+
+*
+  box-sizing border-box
+
+html
+  font-size 1em
+  +below(35em)
+    font-size .9em
+
+body
+  font-family font-body
+  font-weight 300
+  line-height 1.2
+  background-color color-white--light
+  color color-black--lighter
+
+h1
+h3
+h4
+h5
+  @extends .title
+
+h1
+  font-size 3rem
+
+h2
+  font-size 2rem
+  line-height 1.4
+
+h3
+h5
+  font-size 2.5rem
+
+h4
+  font-size 1.9rem
+
+a
+  color inherit
+  text-decoration none
+  transition opacity 200ms
+  &:hover
+    opacity .6
+
+strong
+  font-weight 600
+
+// header
+.header
+  position fixed
+  width 100%
+  z-index 100
+  color color-black
+  background-color color-white--lighter
+  transition all 300ms
+  &.isTransparent
+    color color-black
+    background-color transparent
+
+.header__content
+  @extends .container
+  overflow hidden
+
+.header__logo
+  @extends .title
+  float left
+  // padding .5rem
+  font-size 1.75rem
+  margin-left 0
+  img
+    width 8rem
+
+.header_nav
+  margin 4.3rem 1rem 1rem 1rem
+  float left
+  border-bottom .175rem solid color-black
+  .btn--mars
+    font-size 1.25rem
+
+  .item
+    margin 0 .5rem 0 .5rem
+    display inline
+
+// content
+.content
+  padding 10rem 1rem 3rem 1.1em
+
+.content_section
+  padding-bottom 2rem
+
+.content_title
+  font-size 2rem
+  line-height 1.4
+
+.content_item
+  margin 1rem 0 0 0
+
+// bottom
+.bottom
+  background-color color-black
+  color color-grey--dark
+  padding 1rem
+
+.bottom__content
+  @extends .container
+  overflow hidden
+  position relative
+  height 200px
+  +below(35em)
+    text-align center
+
+.bottom__content--left
+  float left
+  span
+    font-family font-heading
+    padding 0 .5rem
+  +below(35em)
+    float none
+
+.bottom__content--right
+  float right
+  +below(35em)
+    float none
+    margin-bottom 1rem
+
+.bottom__social
+  color color-grey--dark
+
+.bottom__social-button
+  display inline-block
+  width 1.4rem
+  height 1.4rem
+  background-size 1.4rem
+  vertical-align middle
+  margin-left .5rem
+
+.bottom__social-button--facebook
+  background-image url('/images/facebook.svg')
+
+.bottom__social-button--twitter
+  background-image url('/images/twitter.svg')
+
+.bottom__social-button--instagram
+  background-image url('/images/instagram.svg')
