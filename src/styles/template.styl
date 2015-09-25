@@ -45,6 +45,7 @@ color-white--light = rgb(254,254,254)
 color-white--dark = rgb(230,230,230)
 color-red = rgb(239,90,79)
 color-blue--light = rgb(104,187,227)
+color-blue--dark = rgb(40,59,114)
 
 button(foreground, background)
   box-shadow inset 0 0 0 2px foreground
@@ -185,12 +186,14 @@ strong
   background-color color-black
   color color-grey--dark
   padding 1rem
+  height 160px
+  +below(35em)
+    padding 0.5rem
 
 .bottom__content
   @extends .container
   overflow hidden
   position relative
-  height 200px
   +below(35em)
     text-align center
 
@@ -198,7 +201,7 @@ strong
   float left
   span
     font-family font-heading
-    padding 0 .5rem
+    padding 1rem .5rem
   +below(35em)
     float none
 
@@ -227,3 +230,35 @@ strong
 
 .bottom__social-button--instagram
   background-image url('/images/instagram.svg')
+
+.footer
+  @extends .container
+  width 100%
+  background-color color-white--light
+  color color-blue--dark
+  text-align center
+
+.footer__contacts_container
+  float left
+  margin 1rem 0rem 2rem 0rem
+  +below(35em)
+    margin 0.5rem 0 2rem 0
+  font-size 0.5rem
+  .footer__logo
+    float left
+    width 260px
+    // margin 0rem 0.5rem 0rem 0.5rem
+    line-height 0.8rem
+    text-align left
+    div
+      margin 0rem 0rem 1rem 0.8rem
+  .footer__contacts_info
+    float left
+    line-height 1rem
+    font-size 0.65rem
+    text-align left
+    margin 0rem 0.5rem 0rem 0.7rem
+    a
+      text-decoration underline
+      font-size 0.75rem
+      line-height 2rem

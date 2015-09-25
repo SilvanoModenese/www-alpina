@@ -14,7 +14,7 @@ html(lang="en")
     .header
       .header__content
         .header__logo
-          img(src="/images/logo.svg" alt="")
+          img(src="/images/logo.svg",alt="")
         .header_nav
           span.item
             a(href="/") HOME
@@ -32,11 +32,29 @@ html(lang="en")
     .bottom
       .bottom__content
         .bottom__content--left &copy;
-          span Silvano Modenese
-          |2015
+          span Silvano Modenese 2015
         .bottom__content--right
           span.bottom__follow-us Follow us
           a.bottom__social-button.bottom__social-button--facebook(href="https://www.facebook.com")
           a.bottom__social-button.bottom__social-button--twitter(href="https://twitter.com")
           a.bottom__social-button.bottom__social-button--instagram(href="https://instagram.com")
+
+    .footer
+      .footer__contacts_container
+        .footer__logo
+          img(src="/images/ModeneseSilvano.svg", alt="Silvano Modenese", width="260")
+          div
+            strong
+              | Attrezzature e prodotti per la transformazione del latte
+              | e per l'industria alimentare
+        .footer__contacts_info
+          div
+            a(mailto="info@modenesesilvano.com") info@modenesesilvano.com
+          div Amministrazione: 38023 Cles (TN) - Via Trento 83 C
+          div Tel. (+39) 0463422336
+          div Fax. (+39) 0463429270
+          div Magazzino: 38023 Cles (TN) - Viale Degasperi, 118/23
+          div Cod. Fisc. MDN SVN 55A11 C794J
+          div Part. IVA: 00373870229
+
     script(src="/javascripts/bundle.js", defer)
