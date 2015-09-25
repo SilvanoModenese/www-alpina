@@ -199,9 +199,10 @@ strong
 
 .bottom__content--left
   float left
+  padding 1rem .5rem 0 1rem
   span
+    margin-left 0.3rem
     font-family font-heading
-    padding 1rem .5rem
   +below(35em)
     float none
 
@@ -251,14 +252,22 @@ strong
     line-height 0.8rem
     text-align left
     div
+      +below(35em)
+        font-size 0.6rem
       margin 0rem 0rem 1rem 0.8rem
   .footer__contacts_info
     float left
     line-height 1rem
     font-size 0.65rem
+    +below(35em)
+      font-size 0.8rem
+      line-height 1.2rem
     text-align left
     margin 0rem 0.5rem 0rem 0.7rem
     a
       text-decoration underline
       font-size 0.75rem
       line-height 2rem
+      +below(35em)
+        font-size 1rem
+
