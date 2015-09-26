@@ -21,22 +21,15 @@ module.exports = function (services, config) {
     app.use(compression())
     app.use(express.static(process.env.PWD + '/dist'))
 
-    app.get('/forbidden', function (req, res, next) {
-
-        res.render('forbidden', {})
-
-    })
-
     app.get('/not-found', function (req, res, next) {
 
         res.render('not-found', {})
 
     })
 
-    // routes
     app.get('/', function (req, res, next) {
 
-        res.render('homepage', {})
+        res.render('index', {})
 
     })
 
@@ -46,6 +39,11 @@ module.exports = function (services, config) {
 
     })
 
+    app.get('/azienda', function (req, res, next) {
+
+        res.render('azienda', {})
+
+    })
 
     // error middleware
     app.use(function(err, req, res, next) {

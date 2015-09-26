@@ -2,16 +2,18 @@ var fs = require('fs')
 
 var gulp = require('gulp')
 var del = require('del')
-var rename = require('gulp-rename')
-var jade = require('gulp-jade')
+var rename  = require('gulp-rename')
+var jade    = require('gulp-jade')
 var plumber = require('gulp-plumber')
-var stylus = require('gulp-stylus')
+var stylus  = require('gulp-stylus')
 var replace = require('gulp-replace')
 var connect = require('gulp-connect')
+var uglify  = require('gulp-uglify')
 var runSequence = require('run-sequence')
-var uglify = require('gulp-uglify')
 
-var config = require('./lib/config')
+var config = require('./src/config')
+
+
 
 gulp.task('clean-dist', function(callback) {
   del('./dist', callback)
@@ -23,10 +25,12 @@ gulp.task('clean-tmp', function(callback) {
 
 gulp.task('template', function() {
   return gulp.src('./src/html/**/*')
-    .pipe(jade({
-      locals: require('./src/data/fixtures'),
-      pretty: true
-    }))
+    .pipe(
+      jade({
+        locals: {},
+        pretty: true
+      })
+    )
     .pipe(gulp.dest('./dist/html'))
     .pipe(connect.reload())
 })
@@ -51,20 +55,13 @@ gulp.task('styles', function() {
     .pipe(connect.reload())
 })
 
-gulp.task('javascripts', function() {
-  return gulp.src('./src/javascripts/**/*.js')
-    .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./dist/javascripts'))
-    .pipe(connect.reload())
-})
-
 gulp.task('images', function() {
   return gulp.src('./src/assets/images/**/*')
     .pipe(gulp.dest('./dist/images'))
 })
 
 gulp.task('fonts', function() {
-  return gulp.src('./src/assets/fonts/**/*')
+  return gulp.src('./src/fonts/**/*')
     .pipe(gulp.dest('./dist/fonts'))
 })
 
@@ -72,20 +69,19 @@ gulp.task('connect', function() {
   return connect.server({
     root: './dist',
     port: 3000,
-    host: '192.168.1.101',
+    // host: '192.168.1.101',
     livereload: true
   })
 })
 
 gulp.task('watch', function() {
   gulp.watch('./src/html/**/*.jade', ['template'])
-  gulp.watch('./src/styles/**/*.styl', ['styles'])
-  return gulp.watch('./src/javascripts/**/*.js', ['javascripts'])
+  return gulp.watch('./src/styles/**/*.styl', ['styles'])
 })
 
 gulp.task('default', function(callback) {
   return runSequence(
-    ['clean-dist', 'clean-tmp', 'template', 'styles', 'javascripts', 'images', 'fonts', 'connect', 'watch'],
+    ['clean-dist', 'clean-tmp', 'template', 'styles', 'images', 'fonts', 'connect', 'watch'],
     callback
   )
 })
@@ -107,13 +103,6 @@ gulp.task('build-styles', function() {
     .pipe(gulp.dest('./dist/styles'))
 })
 
-gulp.task('build-javascripts', function() {
-  return gulp.src('./src/javascripts/**/*.js')
-    .pipe(uglify())
-    .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./dist/javascripts'))
-})
-
 gulp.task('robots', function() {
   return gulp.src('./src/robots.txt')
     .pipe(replace('__URL__', config.url))
@@ -123,7 +112,7 @@ gulp.task('robots', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     ['clean-dist', 'clean-tmp'], ['template', 'styles', 'javascripts', 'images', 'fonts'],
-    'clean-dist', ['build-styles', 'build-javascripts', 'images', 'fonts', 'robots'],
+    'clean-dist', ['build-styles', 'images', 'fonts', 'robots'],
     callback
   )
 })
