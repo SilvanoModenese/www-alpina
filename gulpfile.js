@@ -27,7 +27,7 @@ gulp.task('template', function() {
   return gulp.src('./src/html/**/*')
     .pipe(
       jade({
-        locals: {},
+        locals: config,
         pretty: true
       })
     )
