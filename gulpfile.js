@@ -80,8 +80,8 @@ gulp.task('watch', function() {
 })
 
 gulp.task('default', function(callback) {
-  return runSequence(
-    ['clean-dist', 'clean-tmp', 'template', 'styles', 'images', 'fonts', 'connect', 'watch'],
+  runSequence(
+    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'fonts'], ['connect', 'watch'],
     callback
   )
 })
