@@ -111,7 +111,7 @@ gulp.task('robots', function() {
 
 gulp.task('build', function(callback) {
   return runSequence(
-    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'javascripts', 'images', 'fonts'],
+    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'fonts'],
     'clean-dist', ['build-styles', 'images', 'fonts', 'robots'],
     callback
   )

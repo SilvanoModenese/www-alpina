@@ -18,19 +18,19 @@ module.exports = function (services, config) {
         lastModified: true
     }
 
-    app.get('/', function (req, res, next) {
+    app.get('/', function (req, res) {
 
         res.sendFile('index.html', sendFileOptions)
 
     })
 
-    app.get('/faq', function (req, res, next) {
+    app.get('/faq', function (req, res) {
 
         res.sendFile('faq.html', sendFileOptions)
 
     })
 
-    app.get('/ModeneseSilvano', function (req, res, next) {
+    app.get('/ModeneseSilvano', function (req, res) {
 
         res.sendFile('ModeneseSilvano.html', sendFileOptions)
 
@@ -42,6 +42,13 @@ module.exports = function (services, config) {
         res.sendFile('not-found.html', sendFileOptions)
 
     })
+
+    app.use(function(req, res) {
+
+        res.sendFile('not-found.html', sendFileOptions)
+
+    })
+
 
     return app
 
