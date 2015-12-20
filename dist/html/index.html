@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/styles/bundle.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendors/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="/vendors/photoswipe/default-skin/default-skin.css">
   </head>
   <body>
     <div class="header">
@@ -17,11 +19,63 @@
     <div class="container">
       <div class="content">
         <div class="content_section">
-          <div class="content_title">YOGURTIERA</div>
-          <p>Fermentiera a Bagnomaria</p>
-          <div class="content_item">
-            <center><img src="/images/fermentiera.png" width="300"></center>
-          </div>
+          <center>
+            <div class="content_title">YOGURTIERA</div>
+            <p>Fermentiera a Bagnomaria</p>
+            <div class="content_item"><img src="/images/gallery/medium/fermentiera_e_monitor.jpg" width="300" onclick="openPhotoSwipe()"></div>
+            <div onclick="openPhotoSwipe()" class="first_image">
+              <!-- Root element of PhotoSwipe. Must have class pswp.-->
+              <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+                <!--
+                Background of PhotoSwipe.
+                It's a separate element as animating opacity is faster than rgba(). 
+                -->
+                <div class="pswp__bg"></div>
+                <!-- Slides wrapper with overflow:hidden.-->
+                <div class="pswp__scroll-wrap">
+                  <!--
+                  Container that holds slides. 
+                  PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                  Don't modify these 3 pswp__item elements, data is added later on. 
+                  -->
+                  <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                  </div>
+                  <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.-->
+                  <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                      <!-- Controls are self-explanatory. Order can be changed.-->
+                      <div class="pswp__counter"></div>
+                      <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+                      <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+                      <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+                      <!--
+                      Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR
+                      element will get class pswp__preloader--active when preloader is running
+                      -->
+                      <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                      <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+                    <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+                    <div class="pswp__caption">
+                      <div class="pswp__caption__center"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </center>
           <div class="content_item">
             <p>Fermentiera elettrica automatica con capacità lavorabile di <b>14 litri di latte.</b></p>
             <p>
@@ -104,6 +158,52 @@
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-68395688-1', 'auto');
         ga('send', 'pageview');
+        
+      </script>
+      <script src="/vendors/photoswipe/photoswipe.min.js"></script>
+      <script src="/vendors/photoswipe/photoswipe-ui-default.min.js"></script>
+      <script>
+        var openPhotoSwipe = function() {
+          var pswpElement = document.querySelectorAll('.pswp')[0];
+        
+          // build items array
+          var items = [
+            {
+              src:  '/images/gallery/fermentiera_e_monitor.jpg',
+              msrc: '/images/gallery/medium/fermentiera_e_monitor.jpg',
+              w: 1000,
+              h: 1500,
+              title: 'La fermentiera con il quadro in acciaio inox AISI 304 nella quale è installato il PLC di controllo dei cicli termici'
+            },
+            {
+              src:  '/images/gallery/fermentiera_e_secchio.jpg',
+              msrc: '/images/gallery/medium/fermentiera_e_secchio.jpg',
+              w: 1500,
+              h: 1000,
+              title: 'Fermentiera elettrica automatica con capacità lavorabile di 14 litri di latte.'
+            },
+            {
+              src:  '/images/gallery/fermentiera.jpg',
+              msrc: '/images/gallery/medium/fermentiera.jpg',
+              w: 1500,
+              h: 1000,
+              title: 'Il funzionamento è basato sul principio del riscaldamento e raffreddamento "a bagnomaria" del latte. Tramite il controllo del ciclo termico del latte trattato si ottiene la preparazione di latte-innesto, siero-innesto, yogurt, latte pastorizzato e dessert.'
+            }
+          ]
+          
+          // define options (if needed)
+          var options = {
+            // history & focus options are disabled on CodePen        
+            history: false,
+            focus: false,
+        
+            showAnimationDuration: 100,
+            hideAnimationDuration: 100
+          }
+        
+          var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options)
+          gallery.init()
+        }
       </script>
     </div>
   </body>

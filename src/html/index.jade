@@ -3,15 +3,58 @@ extends ./layout.jade
 block title
   title Fermentiera Alpina | Modenese Silvano
 
+block additional-headers
+  link(rel="stylesheet", href="/vendors/photoswipe/photoswipe.css") 
+  link(rel="stylesheet", href="/vendors/photoswipe/default-skin/default-skin.css")
+
 block content
   .content_section
-    .content_title YOGURTIERA
-    p
-      | Fermentiera a Bagnomaria
-    .content_item
-      center
-        img(src="/images/fermentiera.png", width="300")
-      //- img(src="/images/foto_schematica.png", width="360")
+    center
+      .content_title YOGURTIERA
+      p
+        | Fermentiera a Bagnomaria
+      .content_item
+        img(src="/images/gallery/medium/fermentiera_e_monitor.jpg", width="300", onclick="openPhotoSwipe()")
+      div(class="first_image", onclick="openPhotoSwipe()")
+        // Root element of PhotoSwipe. Must have class pswp.
+        .pswp(tabindex="-1", role="dialog", aria-hidden="true")
+          //
+            Background of PhotoSwipe.
+            It's a separate element as animating opacity is faster than rgba(). 
+          .pswp__bg
+          // Slides wrapper with overflow:hidden.
+          .pswp__scroll-wrap
+            //
+              Container that holds slides. 
+              PhotoSwipe keeps only 3 of them in the DOM to save memory.
+              Don't modify these 3 pswp__item elements, data is added later on. 
+            .pswp__container
+              .pswp__item
+              .pswp__item
+              .pswp__item
+            // Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.
+            .pswp__ui.pswp__ui--hidden
+              .pswp__top-bar
+                // Controls are self-explanatory. Order can be changed.
+                .pswp__counter
+                button.pswp__button.pswp__button--close(title="Close (Esc)")
+                //- button.pswp__button.pswp__button--share(title="Share")
+                button.pswp__button.pswp__button--fs(title="Toggle fullscreen")
+                button.pswp__button.pswp__button--zoom(title="Zoom in/out")
+                //
+                  Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR
+                  element will get class pswp__preloader--active when preloader is running
+                .pswp__preloader
+                  .pswp__preloader__icn
+                    .pswp__preloader__cut
+                      .pswp__preloader__donut
+              .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+                .pswp__share-tooltip
+              button.pswp__button.pswp__button--arrow--left(title="Previous (arrow left)")
+              button.pswp__button.pswp__button--arrow--right(title="Next (arrow right)")
+              .pswp__caption
+                .pswp__caption__center
+
     .content_item
       p
         | Fermentiera elettrica automatica con capacità lavorabile di 
@@ -23,6 +66,7 @@ block content
         b 
           | latte-innesto, siero-innesto, yogurt,
           | latte pastorizzato e dessert.
+
   .content_section
     .content_title COMPONENTI
     .content_item
@@ -87,3 +131,48 @@ block content
         b
           | 14 litri di latte 20-70°C c.ca 50-60 minuti
 
+block additional-scripts
+  script(src="/vendors/photoswipe/photoswipe.min.js")
+  script(src="/vendors/photoswipe/photoswipe-ui-default.min.js")
+  script.
+    var openPhotoSwipe = function() {
+      var pswpElement = document.querySelectorAll('.pswp')[0];
+
+      // build items array
+      var items = [
+        {
+          src:  '/images/gallery/fermentiera_e_monitor.jpg',
+          msrc: '/images/gallery/medium/fermentiera_e_monitor.jpg',
+          w: 1000,
+          h: 1500,
+          title: 'La fermentiera con il quadro in acciaio inox AISI 304 nella quale è installato il PLC di controllo dei cicli termici'
+        },
+        {
+          src:  '/images/gallery/fermentiera_e_secchio.jpg',
+          msrc: '/images/gallery/medium/fermentiera_e_secchio.jpg',
+          w: 1500,
+          h: 1000,
+          title: 'Fermentiera elettrica automatica con capacità lavorabile di 14 litri di latte.'
+        },
+        {
+          src:  '/images/gallery/fermentiera.jpg',
+          msrc: '/images/gallery/medium/fermentiera.jpg',
+          w: 1500,
+          h: 1000,
+          title: 'Il funzionamento è basato sul principio del riscaldamento e raffreddamento "a bagnomaria" del latte. Tramite il controllo del ciclo termico del latte trattato si ottiene la preparazione di latte-innesto, siero-innesto, yogurt, latte pastorizzato e dessert.'
+        }
+      ]
+      
+      // define options (if needed)
+      var options = {
+        // history & focus options are disabled on CodePen        
+        history: false,
+        focus: false,
+
+        showAnimationDuration: 100,
+        hideAnimationDuration: 100
+      }
+
+      var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options)
+      gallery.init()
+    }
