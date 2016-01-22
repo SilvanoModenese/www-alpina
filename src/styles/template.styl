@@ -127,6 +127,8 @@ strong
   transition all 300ms
   +below(35em)
     height 4.4rem
+  // +below(21em)
+  //   height 3rem
   &.isTransparent
     color color-black
     background-color transparent
@@ -167,7 +169,7 @@ strong
   +below(35em)
     padding 5rem .4rem 3rem .4rem
   +below(21em)
-    padding 7rem .4rem 3rem .4rem
+    padding 4.5rem .4rem 3rem .4rem
   a
     text-decoration underline
 
@@ -278,4 +280,29 @@ strong
       line-height 2rem
       +below(35em)
         font-size 1rem
+
+.question-list
+  line-height 1.4rem
+  +below(35em)
+    line-height 1.8rem
+  li a
+    font-style: italic
+    font-weight 500
+
+.question
+  padding-top: 1rem
+  font-size 1.2rem
+  font-style: italic
+  font-weight 500
+
+a.anchor
+  display: block
+  position: relative
+  top: -8rem
+  visibility: hidden
+  +below(35em)
+    top: -4.4rem
+
+.answer
+  padding-top: 0.4rem
 

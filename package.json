@@ -16,7 +16,8 @@
     "compression": "^1.5.2",
     "debug": "^2.2.0",
     "express": "^4.13.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll"
   },
   "devDependencies": {
     "del": "^1.2.0",

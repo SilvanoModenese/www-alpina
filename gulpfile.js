@@ -65,6 +65,11 @@ gulp.task('vendors', function() {
     .pipe(gulp.dest('./dist/vendors'))
 })
 
+gulp.task('modules', function() {
+  return gulp.src('./node_modules/**/dist/**/*.js')
+    .pipe(gulp.dest('./dist/modules'))
+})
+
 gulp.task('fonts', function() {
   return gulp.src('./src/fonts/**/*')
     .pipe(gulp.dest('./dist/fonts'))
@@ -74,7 +79,7 @@ gulp.task('connect', function() {
   return connect.server({
     root: './dist',
     port: 3000,
-    // host: '192.168.1.101',
+    host: '192.168.1.108',
     livereload: true
   })
 })
@@ -86,7 +91,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', function(callback) {
   runSequence(
-    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'fonts'], ['connect', 'watch'],
+    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'modules', 'fonts'], ['connect', 'watch'],
     callback
   )
 })
@@ -116,8 +121,8 @@ gulp.task('robots', function() {
 
 gulp.task('build', function(callback) {
   return runSequence(
-    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'fonts'],
-    'clean-dist', ['build-styles', 'images', 'fonts', 'robots'],
+    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'modules', 'fonts'],
+    ['build-styles', 'images', 'fonts', 'robots'],
     callback
   )
 })
