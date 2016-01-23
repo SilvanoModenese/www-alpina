@@ -121,9 +121,10 @@
         <div class="content_section">
           <div class="content_title">SPECIFICHE TECNICHE</div>
           <div class="content_item">
-            <p>Dimensioni esterne <b>cm Ø 35x70H</b></p>
+            <p>Dimensioni esterne: <b>Diametro Ø 35cm, altezza 74cm</b></p>
+            <p>Peso a vuoto: <b>20kg</b></p>
             <p>Alimentazione resistenza: <b>220V ; 1,8kW ; 50Hz</b></p>
-            <p>Tempo riscaldamento <b>14 litri di latte 20-70°C c.ca 50-60 minuti</b></p>
+            <p>Tempo riscaldamento: <b>14 litri di latte 20-70°C c.ca 50-60 minuti</b></p>
           </div>
         </div>
       </div>
@@ -203,9 +204,7 @@
               title: 'Il funzionamento è basato sul principio del riscaldamento e raffreddamento "a bagnomaria" del latte. Tramite il controllo del ciclo termico del latte trattato si ottiene la preparazione di latte-innesto, siero-innesto, yogurt, latte pastorizzato e dessert.'
             }
           ]
-          
-          // define options (if needed)
-          var options = {
+          var photoSwipeOptions = {
             // history & focus options are disabled on CodePen        
             history: false,
             focus: false,
@@ -214,7 +213,7 @@
             hideAnimationDuration: 100
           }
         
-          var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options)
+          var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, photoSwipeOptions)
           gallery.init()
         }
       </script>

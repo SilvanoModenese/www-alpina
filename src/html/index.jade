@@ -119,15 +119,19 @@ block content
     .content_title SPECIFICHE TECNICHE
     .content_item
       p
-        | Dimensioni esterne 
+        | Dimensioni esterne: 
         b
-          | cm Ø 35x70H
+          | Diametro Ø 35cm, altezza 74cm
+      p
+        | Peso a vuoto: 
+        b
+          | 20kg
       p
         | Alimentazione resistenza: 
         b
           | 220V ; 1,8kW ; 50Hz
       p
-        | Tempo riscaldamento 
+        | Tempo riscaldamento: 
         b
           | 14 litri di latte 20-70°C c.ca 50-60 minuti
 
@@ -162,9 +166,7 @@ block additional-scripts
           title: 'Il funzionamento è basato sul principio del riscaldamento e raffreddamento "a bagnomaria" del latte. Tramite il controllo del ciclo termico del latte trattato si ottiene la preparazione di latte-innesto, siero-innesto, yogurt, latte pastorizzato e dessert.'
         }
       ]
-      
-      // define options (if needed)
-      var options = {
+      var photoSwipeOptions = {
         // history & focus options are disabled on CodePen        
         history: false,
         focus: false,
@@ -173,6 +175,6 @@ block additional-scripts
         hideAnimationDuration: 100
       }
 
-      var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options)
+      var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, photoSwipeOptions)
       gallery.init()
     }
