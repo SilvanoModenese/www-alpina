@@ -11,7 +11,6 @@ module.exports = function (services, config) {
     let app = express()
     app.use(compression())
     app.use(express.static('./dist'))
-    app.use('/fonts', express.static('./dist/fonts'))
 
     let sendFileOptions = {
         root: HTML_DIR,
