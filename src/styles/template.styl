@@ -1,13 +1,13 @@
-url = '__URL__'
-
 @require 'nib'
 @require 'rupture'
 @require 'jeet'
 
+@import url(//fonts.googleapis.com/css?family=Righteous)
+
 global-reset()
 
 font-url(file)
-  return url + '/fonts/' + file
+  return '/fonts/' + file
 
 webfont(family, file, weight, style)
   @font-face
@@ -19,7 +19,13 @@ webfont(family, file, weight, style)
     font-weight weight
     font-style style
 
-webfont('Viga', 'viga/viga-regular-webfont', normal, normal)
+googleFont(family, weight, style)
+  @font-face
+    font-family family
+    src url('//fonts.googleapis.com/css?family='+family)
+    font-weight weight
+    font-style style
+
 webfont('Open Sans', 'opensans/opensans-light-webfont', 300, normal)
 webfont('Open Sans', 'opensans/opensans-lightitalic-webfont', 300, italic)
 webfont('Open Sans', 'opensans/opensans-regular-webfont', 400, normal)
@@ -30,8 +36,10 @@ webfont('Open Sans', 'opensans/opensans-bold-webfont', 700, normal)
 webfont('Open Sans', 'opensans/opensans-bolditalic-webfont', 700, italic)
 webfont('Open Sans', 'opensans/opensans-extrabolditalic-webfont', 800, italic)
 webfont('Open Sans', 'opensans/opensans-extrabold-webfont', 800, normal)
+googleFont('Russo One', normal, normal)
 
-font-heading = "Viga", sans-serif
+
+font-heading = "Russo One", sans-serif
 font-body = "Open Sans", sans-serif
 
 color-black--dark = rgb(38,42,43)
@@ -148,6 +156,7 @@ strong
       width 4rem
 
 .header_nav
+  font-family font-heading
   margin 4rem 1rem 1rem 1rem
   float left
   border-bottom .175rem solid color-black
@@ -177,6 +186,7 @@ strong
   padding-bottom 2rem
 
 .content_title
+  font-family font-heading
   font-size 2rem
   line-height 1.4
   +below(35em)
@@ -282,18 +292,15 @@ strong
         font-size 1rem
 
 .question-list
-  line-height 1.4rem
-  +below(35em)
-    line-height 1.8rem
-  li a
-    font-style: italic
-    font-weight 500
+  line-height 1.8rem
 
 .question
+  font-family font-heading
   padding-top: 1rem
   font-size 1.2rem
-  font-style: italic
   font-weight 500
+  a
+    text-decoration none
 
 a.anchor
   display: block

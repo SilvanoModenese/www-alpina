@@ -37,7 +37,6 @@ gulp.task('template', function() {
 
 gulp.task('styles', function() {
   return gulp.src('./src/styles/**/*.styl')
-    .pipe(replace('__URL__', config.url))
     .pipe(plumber())
     .pipe(stylus({
       use: [
@@ -78,8 +77,8 @@ gulp.task('fonts', function() {
 gulp.task('connect', function() {
   return connect.server({
     root: './dist',
-    port: 3000,
-    host: '192.168.1.108',
+    port: 9999,
+    host: '192.168.1.65',
     livereload: true
   })
 })
@@ -99,7 +98,6 @@ gulp.task('default', function(callback) {
 
 gulp.task('build-styles', function() {
   return gulp.src('./src/styles/**/*.styl')
-    .pipe(replace('__URL__', config.url))
     .pipe(plumber())
     .pipe(stylus({
       use: [
