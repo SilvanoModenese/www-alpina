@@ -24,7 +24,7 @@ gulp.task('clean-tmp', function(callback) {
 })
 
 gulp.task('template', function() {
-  return gulp.src('./src/html/**/*')
+  return gulp.src('./src/html/**/*.jade')
     .pipe(
       jade({
         locals: config,

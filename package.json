@@ -1,13 +1,13 @@
 {
   "name": "www-alpina",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Web Fermentiera Aplina",
   "main": "index.js",
   "repository": "git@github.com:SilvanoModenese/www-alpina.git",
   "scripts": {
     "start": "node index.js",
     "build": "./node_modules/.bin/gulp build",
-    "dev": "gulp",
+    "dev": "./node_modules/.bin/gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fabrizio Moscon",
@@ -16,7 +16,7 @@
     "compression": "^1.5.2",
     "debug": "^2.2.0",
     "express": "^4.13.3",
-    "smooth-scroll": "github:cferdinandi/smooth-scroll"
+    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git"
   },
   "devDependencies": {
     "jade": "^1.11.0",
@@ -36,7 +36,7 @@
     "rupture": "^0.6.1"
   },
   "engines": {
-    "node": "4.1.1",
-    "npm": "2.13.x"
+    "node": "^5.6.x",
+    "npm": "^3.7.x"
   }
 }

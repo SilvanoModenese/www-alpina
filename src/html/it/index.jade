@@ -1,0 +1,98 @@
+extends ./layout.jade
+
+block title
+  title Fermentiera a Bagnomaria Yogurtiera Alpina | Modenese Silvano
+
+block additional-headers
+  include ../includes/photo_swipe/style.jade
+
+block content
+  .content_section
+    center
+      .content_title Fermenteria a Bagnomaria
+      .content_title Yogurtiera
+      include ../includes/photos.jade
+
+    .content_item
+      p
+        | Fermentiera elettrica automatica con capacità lavorabile di 
+        b 14 litri di latte.
+      p
+        | Il funzionamento è basato sul principio del riscaldamento e raffreddamento
+        | "a bagnomaria" del latte. Tramite il controllo del ciclo termico del latte
+        | trattato si ottiene la preparazione di
+        b 
+          | latte-innesto, siero-innesto, yogurt,
+          | latte pastorizzato e dessert.
+
+  .content_section
+    .content_title Componenti
+    .content_item
+      p La fermentiera è costituita da quattro componenti:
+      ul
+        li
+          b
+            | la struttura cilindrica esterna 
+          | in acciaio inox AISI 304 all’interno
+          | della quale è ricavato un bagnomaria dove viene inserito il
+          | secchio di lavorazione
+        li
+          b
+            | il secchio di lavorazione cilindrico 
+          | in acciaio inox AISI 304 dove
+          | viene immesso il latte da lavorare della capacità di 14 litri
+        li
+          b
+            | il coperchio del secchio 
+          | in acciaio inox AISI 304 su cui è montato 
+          b
+            | l'elettroagitatore (protetto da un carter) 
+          | con 
+          b
+            | la pala 
+          | per la mescolazione del latte in acciaio inox AISI 304 e 
+          b
+            | la sonda 
+          | di misurazione della temperatura del latte
+        li
+          b
+            | il quadro 
+          | in acciaio inox AISI 304 nella quale è installato 
+          b
+            | il PLC di controllo 
+          | dei cicli termici
+
+  .content_section
+    .content_title Processo
+    .content_item
+      p
+        | Le operazioni di raffreddamento sono realizzate automaticamente tramite
+        | un'apposita elettrovalvola di ingresso acqua di rete (a perdere) comandata
+        | dal PLC oppure utilizzando acqua gelida da impianto esterno (optional).
+      p
+        | Le operazioni di riscaldamento e mantenimento della temperatura sono
+        | realizzate mediante una resistenza elettrica gestita dal PLC.
+
+  .content_section
+    .content_title Specifiche Tecniche
+    .content_item
+      p
+        | Dimensioni esterne: 
+        b
+          | Diametro Ø 35cm, altezza 74cm
+      p
+        | Peso a vuoto: 
+        b
+          | 20kg
+      p
+        | Alimentazione resistenza: 
+        b
+          | 220V ; 1,8kW ; 50Hz
+      p
+        | Tempo riscaldamento: 
+        b
+          | 14 litri di latte 20-70°C c.ca 50-60 minuti
+
+block additional-scripts
+
+  include ../includes/photo_swipe/script.jade

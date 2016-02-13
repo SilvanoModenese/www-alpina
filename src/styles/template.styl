@@ -42,18 +42,22 @@ googleFont('Russo One', normal, normal)
 font-heading = "Russo One", sans-serif
 font-body = "Open Sans", sans-serif
 
+color-black--darker = rgb(0, 0, 0)
 color-black--dark = rgb(38,42,43)
 color-black = rgb(53,57,58)
 color-black--light = rgb(81,88,90)
 color-black--lighter = rgb(100,100,100)
+
+color-blue--dark = #283583
+color-blue--light = #7B78B1
+
 color-grey--dark = rgb(139,140,142)
 color-grey = rgb(174,174,176)
+
 color-white--lighter = rgb(255,255,255)
 color-white--light = rgb(254,254,254)
 color-white--dark = rgb(230,230,230)
-color-red = rgb(239,90,79)
-color-blue--light = rgb(104,187,227)
-color-blue--dark = rgb(40,59,114)
+
 
 button(foreground, background)
   box-shadow inset 0 0 0 2px foreground
@@ -128,10 +132,11 @@ strong
 .header
   position fixed
   width 100%
-  height 8rem
+  height 8.28rem
   z-index 100
   color color-black
-  background-color color-white--lighter
+  background-color color-white--dark
+  border-bottom 4px solid color-black--dark
   transition all 300ms
   +below(35em)
     height 4.4rem
@@ -146,23 +151,28 @@ strong
   overflow hidden
 
 .header__logo
-  @extends .title
   float left
-  font-size 1.75rem
-  margin-left 0
   img
     width 8rem
     +below(35em)
       width 4rem
 
+.header_flags
+  margin 0.5rem 1rem 0rem 1rem
+  float right
+  display block
+  span
+    margin-left 0.5rem
+
 .header_nav
   font-family font-heading
   margin 4rem 1rem 1rem 1rem
   float left
-  border-bottom .175rem solid color-black
+  color color-black--dark
   line-height 1.6rem
+  font-size 1.4rem
   +below(35em)
-    margin 1.15rem .2rem 1rem .2rem
+    margin 0.31rem .2rem 1rem .2rem
   +below(21em)
     display inline
     margin 0.8 .2rem 1rem .2rem
@@ -192,6 +202,7 @@ strong
   font-family font-heading
   font-size 2rem
   line-height 1.4
+  color color-blue--dark
   +below(35em)
     font-size 1.3rem
 
@@ -308,7 +319,7 @@ strong
 a.anchor
   display: block
   position: relative
-  top: -8rem
+  top: -8.28rem
   visibility: hidden
   +below(35em)
     top: -4.4rem

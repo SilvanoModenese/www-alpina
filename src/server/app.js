@@ -4,6 +4,7 @@ let compression = require('compression')
 let debug       = require('debug')('www-alpina:app')
 let express     = require('express')
 
+
 const HTML_DIR = './dist/html/'
 
 module.exports = function (services, config) {
@@ -11,6 +12,7 @@ module.exports = function (services, config) {
     let app = express()
     app.use(compression())
     app.use(express.static('./dist'))
+
 
     let sendFileOptions = {
         root: HTML_DIR,
@@ -20,19 +22,25 @@ module.exports = function (services, config) {
 
     app.get('/', function (req, res) {
 
-        res.sendFile('index.html', sendFileOptions)
+        res.sendFile('it/index.html', sendFileOptions)
 
     })
 
     app.get('/faq', function (req, res) {
 
-        res.sendFile('faq.html', sendFileOptions)
+        res.sendFile('it/faq.html', sendFileOptions)
 
     })
 
     app.get('/ModeneseSilvano', function (req, res) {
 
-        res.sendFile('ModeneseSilvano.html', sendFileOptions)
+        res.sendFile('it/ModeneseSilvano.html', sendFileOptions)
+
+    })
+
+    app.get('/de', function (req, res) {
+
+        res.sendFile('de/index.html', sendFileOptions)
 
     })
 
@@ -48,7 +56,6 @@ module.exports = function (services, config) {
         res.sendFile('not-found.html', sendFileOptions)
 
     })
-
 
     return app
 
