@@ -1,6 +1,6 @@
 /*!
- * smooth-scroll v9.0.1: Animate scrolling to anchor links
- * (c) 2016 Chris Ferdinandi
+ * smooth-scroll v7.1.1: Animate scrolling to anchor links
+ * (c) 2015 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/smooth-scroll
  */
@@ -23,7 +23,7 @@
 
 	var smoothScroll = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root; // Feature test
-	var settings, eventTimeout, fixedHeader, headerHeight, animationInterval;
+	var settings, eventTimeout, fixedHeader, headerHeight;
 
 	// Default settings
 	var defaults = {
@@ -170,18 +170,12 @@
 
 	/**
 	 * Escape special characters for use with querySelector
-	 * @public
+	 * @private
 	 * @param {String} id The anchor ID to escape
 	 * @author Mathias Bynens
 	 * @link https://github.com/mathiasbynens/CSS.escape
 	 */
-	smoothScroll.escapeCharacters = function ( id ) {
-
-		// Remove leading hash
-		if ( id.charAt(0) === '#' ) {
-			id = id.substr(1);
-		}
-
+	var escapeCharacters = function ( id ) {
 		var string = String(id);
 		var length = string.length;
 		var index = -1;
@@ -243,9 +237,7 @@
 			result += '\\' + string.charAt(index);
 
 		}
-
-		return '#' + result;
-
+		return result;
 	};
 
 	/**
@@ -335,36 +327,31 @@
 	/**
 	 * Start/stop the scrolling animation
 	 * @public
-	 * @param {Element} anchor The element to scroll to
 	 * @param {Element} toggle The element that toggled the scroll event
+	 * @param {Element} anchor The element to scroll to
 	 * @param {Object} options
 	 */
-	smoothScroll.animateScroll = function ( anchor, toggle, options ) {
-
-		// if ( scrolling ) return;
+	smoothScroll.animateScroll = function ( toggle, anchor, options ) {
 
 		// Options and overrides
 		var overrides = getDataOptions( toggle ? toggle.getAttribute('data-options') : null );
 		var settings = extend( settings || defaults, options || {}, overrides ); // Merge user options with defaults
+		anchor = '#' + escapeCharacters(anchor.substr(1)); // Escape special characters and leading numbers
 
 		// Selectors and variables
-		var isNum = Object.prototype.toString.call( anchor ) === '[object Number]' ? true : false;
-		var anchorElem = isNum ? null : anchor === '#' ? root.document.documentElement : root.document.querySelector(anchor);
-		// var anchorElem = isNum ? null : ( anchor === '#' ? root.document.documentElement : root.document.querySelector(anchor) );
-		if ( !isNum && !anchorElem ) return;
+		var anchorElem = anchor === '#' ? root.document.documentElement : root.document.querySelector(anchor);
 		var startLocation = root.pageYOffset; // Current location on the page
 		if ( !fixedHeader ) { fixedHeader = root.document.querySelector( settings.selectorHeader ); }  // Get the fixed header if not already set
 		if ( !headerHeight ) { headerHeight = getHeaderHeight( fixedHeader ); } // Get the height of a fixed header if one exists and not already set
-		var endLocation = isNum ? anchor : getEndLocation( anchorElem, headerHeight, parseInt(settings.offset, 10) ); // Location to scroll to
+		var endLocation = getEndLocation( anchorElem, headerHeight, parseInt(settings.offset, 10) ); // Scroll to location
+		var animationInterval; // interval timer
 		var distance = endLocation - startLocation; // distance to travel
 		var documentHeight = getDocumentHeight();
 		var timeLapsed = 0;
 		var percentage, position;
 
 		// Update URL
-		if ( !isNum ) {
-			updateUrl(anchor, settings.updateURL);
-		}
+		updateUrl(anchor, settings.updateURL);
 
 		/**
 		 * Stop the scroll animation when it reaches its target (or the bottom/top of page)
@@ -377,10 +364,8 @@
 			var currentLocation = root.pageYOffset;
 			if ( position == endLocation || currentLocation == endLocation || ( (root.innerHeight + currentLocation) >= documentHeight ) ) {
 				clearInterval(animationInterval);
-				if ( !isNum ) {
-					anchorElem.focus();
-				}
-				settings.callback( anchor, toggle ); // Run callbacks after animation complete
+				anchorElem.focus();
+				settings.callback( toggle, anchor ); // Run callbacks after animation complete
 			}
 		};
 
@@ -402,7 +387,6 @@
 		 * @private
 		 */
 		var startAnimateScroll = function () {
-			clearInterval(animationInterval);
 			animationInterval = setInterval(loopAnimateScroll, 16);
 		};
 
@@ -427,8 +411,7 @@
 		var toggle = getClosest( event.target, settings.selector );
 		if ( toggle && toggle.tagName.toLowerCase() === 'a' ) {
 			event.preventDefault(); // Prevent default click event
-			var hash = smoothScroll.escapeCharacters( toggle.hash ); // Escape hash characters
-			smoothScroll.animateScroll( hash, toggle, settings); // Animate scroll
+			smoothScroll.animateScroll( toggle, toggle.hash, settings); // Animate scroll
 		}
 	};
 
@@ -465,7 +448,6 @@
 		eventTimeout = null;
 		fixedHeader = null;
 		headerHeight = null;
-		animationInterval = null;
 	};
 
 	/**

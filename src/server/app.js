@@ -44,6 +44,12 @@ module.exports = function (services, config) {
 
     })
 
+    app.get('/de/faq', function (req, res) {
+
+        res.sendFile('de/faq.html', sendFileOptions)
+
+    })
+
     // error middleware
     app.use(function(err, req, res, next) {
 
