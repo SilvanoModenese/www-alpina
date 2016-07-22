@@ -41,8 +41,7 @@ gulp.task('styles', function() {
     .pipe(stylus({
       use: [
         require('nib')(),
-        require('rupture')(),
-        require('jeet')()
+        require('rupture')()
       ],
       sourcemap: {
         inline: true,
@@ -102,8 +101,7 @@ gulp.task('build-styles', function() {
     .pipe(stylus({
       use: [
         require('nib')(),
-        require('rupture')(),
-        require('jeet')()
+        require('rupture')()
       ],
       compress: true
     }))

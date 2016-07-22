@@ -1,6 +1,6 @@
 {
   "name": "www-alpina",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Web Fermentiera Aplina",
   "main": "index.js",
   "repository": "git@github.com:SilvanoModenese/www-alpina.git",
@@ -16,7 +16,7 @@
     "compression": "^1.5.2",
     "debug": "^2.2.0",
     "express": "^4.13.3",
-    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git"
+    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git#v9.1.4"
   },
   "devDependencies": {
     "jade": "^1.11.0",
@@ -29,7 +29,6 @@
     "gulp-replace": "^0.5.4",
     "gulp-stylus": "^2.0.6",
     "gulp-uglify": "^1.4.0",
-    "jeet": "^6.1.2",
     "nib": "^1.1.0",
     "plumber": "^0.4.8",
     "run-sequence": "^1.1.0",
