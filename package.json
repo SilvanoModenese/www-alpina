@@ -1,6 +1,6 @@
 {
   "name": "www-alpina",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Web Fermentiera Aplina",
   "main": "index.js",
   "repository": "git@github.com:SilvanoModenese/www-alpina.git",
@@ -35,7 +35,7 @@
     "rupture": "^0.6.1"
   },
   "engines": {
-    "node": "^5.6.x",
-    "npm": "^3.7.x"
+    "node": "^15.2.1",
+    "npm": "^6.14.8"
   }
 }
