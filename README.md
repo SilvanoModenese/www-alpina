@@ -2,19 +2,22 @@
 
 ## to build
 
-Edit files unde `src` then you can run the build
+Edit files under `src` then you can run the build
 
-	npm run build
+```bash
+npm run build
+```
 
 it will destroy the `dist` directory every time it runs
 
 after that the content is available under http://localhost:9999
 
-	npm start
-
+```bash
+npm start
+```
 
 ## dev
 
-```
+```bash
 npm run dev # http://localhost:9999
 ```
