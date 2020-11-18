@@ -115,10 +115,7 @@ gulp.task('robots', function() {
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('build', function(callback) {
-  return runSequence(
-    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'modules', 'fonts'],
-    ['build-styles', 'images', 'fonts', 'robots'],
-    callback
-  )
-})
+gulp.task('build', gulp.series(
+  gulp.parallel('clean-dist', 'clean-tmp'),
+  gulp.parallel('template', 'styles', 'images', 'vendors', 'modules', 'fonts', 'build-styles', 'images', 'fonts', 'robots')
+))

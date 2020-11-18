@@ -19,9 +19,8 @@
     "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git#v9.1.4"
   },
   "devDependencies": {
-    "jade": "^1.11.0",
     "del": "^1.2.0",
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.0",
     "gulp-connect": "^2.2.0",
     "gulp-jade": "^1.1.0",
     "gulp-plumber": "^1.0.1",
@@ -29,6 +28,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-stylus": "^2.0.6",
     "gulp-uglify": "^1.4.0",
+    "jade": "^1.11.0",
     "nib": "^1.1.0",
     "plumber": "^0.4.8",
     "run-sequence": "^1.1.0",
