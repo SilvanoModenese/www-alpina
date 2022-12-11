@@ -9,11 +9,8 @@ var stylus  = require('gulp-stylus')
 var replace = require('gulp-replace')
 var connect = require('gulp-connect')
 var uglify  = require('gulp-uglify')
-var runSequence = require('run-sequence')
 
 var config = require('./src/config')
-
-
 
 gulp.task('clean-dist', function(callback) {
   del('./dist', callback)
@@ -77,22 +74,21 @@ gulp.task('connect', function() {
   return connect.server({
     root: './dist',
     port: 9999,
-    host: '192.168.1.65',
+    host: 'localhost',
     livereload: true
   })
 })
 
 gulp.task('watch', function() {
-  gulp.watch('./src/html/**/*.jade', ['template'])
-  return gulp.watch('./src/styles/**/*.styl', ['styles'])
+  gulp.watch('./src/html/**/*.jade', gulp.series('template'))
+  return gulp.watch('./src/styles/**/*.styl', gulp.series('styles'))
 })
 
-gulp.task('default', function(callback) {
-  runSequence(
-    ['clean-dist', 'clean-tmp'], ['template', 'styles', 'images', 'vendors', 'modules', 'fonts'], ['connect', 'watch'],
-    callback
-  )
-})
+gulp.task('default', gulp.series(
+  gulp.parallel('clean-dist', 'clean-tmp'),
+  gulp.parallel('template', 'styles', 'images', 'vendors', 'modules', 'fonts'),
+  gulp.parallel('connect', 'watch')
+))
 
 
 gulp.task('build-styles', function() {

@@ -50,14 +50,13 @@
           <div class="question"><a data-scroll="" href="#q4">Was kann ich mit Alpina herstellen?</a></div>
           <div class="answer">Mit Alpina können aufgrund der unterschiedlichen einprogrammierten Programme, Käsekulturen und Fermente, sowie Joghurt und pasteurisierte Milch hergestellt werden.</div><a id="a5" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q5">Kann ich die Programmauswahl individuell verändern?</a></div>
-          <div class="answer">Auf dem Display an der externen Programmsteuerung können die Temperatur, die Zeitspanne und die Rührfunktion manuell eingestellt und variiert werden. </div><a id="a6" class="anchor"></a>
+          <div class="answer">Auf dem Display an der externen Programmsteuerung können die Temperatur, die Zeitspanne und die Rührfunktion manuell eingestellt und variiert werden.</div><a id="a6" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q6">Welche Voraussetzungen benötigt die Inbetriebnahme von Alpina?</a></div>
           <div class="answer">Für die Verwendung von Alpina benötigen Sie lediglich einen Strom-und Wasseranschluss, sowie einen Abfluss in unmittelbarer Nähe.</div><a id="a7" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q7">Worauf muss ich als Anwender achten?</a></div>
           <div class="answer">Lesen Sie zuerst die Gebrauchsanweisung des Gerätes. Füllen Sie den Behälter mit Milch und starten Sie danach das gewünschte Programm. Alles weitere wird Ihnen am Display angezeigt.</div><a id="a8" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q8">Was muss ich nach dem Programmstart beachten?</a></div>
           <div class="answer">
-             
             Für die Joghurtherstellung müssen Sie beim Erreichen der vorgeschriebenen Temperatur die Fermente hinzufügen und diese Zugabe am Display bestätigen. <br>
             Für alle weiteren Programme ist nichts Besonderes zu beachten.
           </div><a id="a9" class="anchor"></a>
@@ -69,7 +68,6 @@
           <div class="answer">Die Herstellung von Käsekulturen und Fermenten benötigt etwa  8-10 Stunden, die Joghurtherstellung hingegen 10-12 Stunden.</div><a id="a12" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q12">Wie kann ich ohne kühlem Wasser trotzdem eine Abkühlung erreichen?</a></div>
           <div class="answer">
-             
             Bei ungenügender Abkühlung durch zu warmes Wasser, kann der Behälter vom Gerät entnommen werden. Schließen Sie ihn mit dem einfachen Deckel und stellen sie den Behälter in den Kühlschrank.
             Als Alternative kann das Gerät auch an einen dafür entwickelten Kühlautomat angeschlossen werden.
           </div><a id="a13" class="anchor"></a>
@@ -86,10 +84,7 @@
           <div class="question"><a data-scroll="" href="#q18">Wann hat sich die Anschaffung dieses Gerätes bezahlt gemacht?</a></div>
           <div class="answer">Das Gerät macht sich im Zeitraum von 8 Monaten bezahlt, wenn pro Woche an die 30 Liter Joghurt hergestellt werden.</div><a id="a19" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q19">Wie soll das Gerät gepflegt werden, um eine lange Betriebsdauer zu erreichen?</a></div>
-          <div class="answer">
-             
-            Zum Reinigen sollte lediglich warmes Wasser mit Geschirrspülmittel verwendet werden, keine Kratzbürsten, sondern weiche Putzlappen. Der Behälter sollte immer gut mit Wasser ausgespült werden, dabei soll unbedingt darauf geachtet werden, dass die elektrischen Bestandteile nicht nass werden.
-          </div><a id="a20" class="anchor"></a>
+          <div class="answer">Zum Reinigen sollte lediglich warmes Wasser mit Geschirrspülmittel verwendet werden, keine Kratzbürsten, sondern weiche Putzlappen. Der Behälter sollte immer gut mit Wasser ausgespült werden, dabei soll unbedingt darauf geachtet werden, dass die elektrischen Bestandteile nicht nass werden.</div><a id="a20" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q20">Wie lange ist das Gerät unter Garantie?</a></div>
           <div class="answer">Die Garantie beläuft sich auf ein Jahr ab dem Datum der Lieferung.</div><a id="a21" class="anchor"></a>
           <div class="question"><a data-scroll="" href="#q21">Wo wird Alpina produziert?</a></div>
@@ -120,7 +115,7 @@
         </div>
       </div>
       <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-      <script src="/modules/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+      <script src="/modules/smooth-scroll/dist/smooth-scroll.min.js"></script>
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -131,14 +126,12 @@
         window.addEventListener('load', function() {
           new FastClick(document.body);
         }, false);
-        smoothScroll.init({
-          selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
-          selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
+        var scroll = new SmoothScroll(
+          'a[href*="#"]', {
           speed: 500, // Integer. How fast to complete the scroll in milliseconds
           easing: 'easeInOutCubic', // Easing pattern to use
           updateURL: true, // Boolean. Whether or not to update the URL with the anchor hash on scroll
-          offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
-          callback: function ( toggle, anchor ) {} // Function to run after scrolling
+          offset: 0 // Integer. How far to offset the scrolling anchor location in pixels
         });
         
       </script>
