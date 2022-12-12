@@ -17,7 +17,7 @@ npm run build
 
 it will destroy the `dist` directory every time it runs
 
-after that the content is available under http://localhost:9999
+after that the content is available under http://localhost:3001
 
 ```bash
 npm start

@@ -20,22 +20,22 @@ module.exports = function (services, config) {
     }
 
     app.get('/', function (req, res) {
-        res.sendFile('it/index.html', sendFileOptions)
+        res.sendFile('index.html', sendFileOptions)
     })
 
-    app.get('/faq', function (req, res) {
-        res.sendFile('it/faq.html', sendFileOptions)
+    app.get('/faq.html', function (req, res) {
+        res.sendFile('faq.html', sendFileOptions)
     })
 
-    app.get('/ModeneseSilvano', function (req, res) {
-        res.sendFile('it/ModeneseSilvano.html', sendFileOptions)
+    app.get('/ModeneseSilvano.html', function (req, res) {
+        res.sendFile('ModeneseSilvano.html', sendFileOptions)
     })
 
-    app.get('/de', function (req, res) {
+    app.get('/de/', function (req, res) {
         res.sendFile('de/index.html', sendFileOptions)
     })
 
-    app.get('/de/faq', function (req, res) {
+    app.get('/de/faq.html', function (req, res) {
         res.sendFile('de/faq.html', sendFileOptions)
     })
 

@@ -28,12 +28,12 @@ gulp.task('template', function() {
         pretty: true
       })
     )
-    .pipe(gulp.dest('./dist/html'))
+    .pipe(gulp.dest('./dist'))
     .pipe(connect.reload())
 })
 
 gulp.task('styles', function() {
-  return gulp.src('./src/styles/**/*.styl')
+  return gulp.src('./src/html/styles/**/*.styl')
     .pipe(plumber())
     .pipe(stylus({
       use: [
@@ -51,12 +51,12 @@ gulp.task('styles', function() {
 })
 
 gulp.task('images', function() {
-  return gulp.src('./src/assets/images/**/*')
+  return gulp.src('./src/html/assets/images/**/*')
     .pipe(gulp.dest('./dist/images'))
 })
 
 gulp.task('vendors', function() {
-  return gulp.src('./src/vendors/**/*')
+  return gulp.src('./src/html/vendors/**/*')
     .pipe(gulp.dest('./dist/vendors'))
 })
 
@@ -66,7 +66,7 @@ gulp.task('modules', function() {
 })
 
 gulp.task('fonts', function() {
-  return gulp.src('./src/fonts/**/*')
+  return gulp.src('./src/html/fonts/**/*')
     .pipe(gulp.dest('./dist/fonts'))
 })
 
@@ -81,7 +81,7 @@ gulp.task('connect', function() {
 
 gulp.task('watch', function() {
   gulp.watch('./src/html/**/*.jade', gulp.series('template'))
-  return gulp.watch('./src/styles/**/*.styl', gulp.series('styles'))
+  return gulp.watch('./src/html/styles/**/*.styl', gulp.series('styles'))
 })
 
 gulp.task('default', gulp.series(
@@ -92,7 +92,7 @@ gulp.task('default', gulp.series(
 
 
 gulp.task('build-styles', function() {
-  return gulp.src('./src/styles/**/*.styl')
+  return gulp.src('./src/html/styles/**/*.styl')
     .pipe(plumber())
     .pipe(stylus({
       use: [
@@ -106,7 +106,7 @@ gulp.task('build-styles', function() {
 })
 
 gulp.task('robots', function() {
-  return gulp.src('./src/robots.txt')
+  return gulp.src('./src/html/robots.txt')
     .pipe(replace('__URL__', config.url))
     .pipe(gulp.dest('./dist'))
 })
